@@ -19,15 +19,15 @@ namespace http\application {
     if(!isset($base_dir)) {
       $base_dir = '.';
     }
+
+    $app = new $base_class(realpath($base_dir), $env);
     
     if(function_exists('http\application\routes\base')) {
       $scope = routes\base();
       $scope->finalize();
-      $routes = $scope->routes();
+      $app->routes($scope->routes());
     }
-
-    $app = new $base_class(realpath($base_dir), $env);
-    $app->routes($routes);
+    
     return $app->run();
   }
 }
