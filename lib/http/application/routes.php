@@ -4,7 +4,7 @@ namespace http\application\routes {
     static $scope;
     if(isset($scope)) return $scope;
     
-    $scope = new \http\route\Scope();
+    $scope = new \http\router\Scope();
     return $scope;
   }
   
