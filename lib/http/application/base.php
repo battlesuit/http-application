@@ -1,6 +1,7 @@
 <?php
 namespace http\application;
 use http\Router;
+use http\transaction;
 
 class Base {
   public $env;
@@ -39,7 +40,7 @@ class Base {
   }
   
   function run() {
-    \http\run_transaction($this)->serve();
+    return transaction\Server::run($this, transaction\request(), array('http\application\middleware\ShowExceptions'))->serve();
   }
 }
 ?>
