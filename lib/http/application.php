@@ -17,7 +17,9 @@ namespace loader {
     * 
     */
     def('http\application\Base', __DIR__."/application/base.php");
-    import('http-router', 'http-action');
+    def('http\application\middleware\ShowExceptions', __DIR__."/application/middleware/show_exceptions.php");
+    
+    load('http-router', 'http-action');
   }
   
   require __DIR__."/application/functions.php";
